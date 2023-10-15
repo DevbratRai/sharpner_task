@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+       .container{
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: palegreen;
+        border-radius: 5px;
+       }
+       h2{
+        text-align: center;
+       }
+       .form-group label{
+        font-weight: bold;
+       }
+       .form-group{
+        margin: 10px;
+       }
+       .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+           
+
+        .form-group button {
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+
+       
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Book a call</h2>
+
+    <form action="#" onsubmit="signUp(event)">
+        <div class="form-group">
+            <label for="name">Name:</label><br>
+            <input type="text" name="name"><br>
+        </div> 
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" id="email"><br>
+
+        </div>
+        <div class="form-group">
+
+            <label for="phone">Phone:</label><br>
+            <input type="number" name="phone"><br>
+        </div>
+        <div class="form-group">
+            <label for="time for call">Time for call:</label><br>
+            <input type="datetime-local" name="date" id=""><br>
+
+        </div>
+        <div class="form-group">
+            <button type="submit">Get A Call</button>
+
+        </div>
+        
+    </form>
+</div>
+<script>
+    function signUp(event){
+        event.preventDefault();
+        console.log(event.target.name.value)
+        console.log(event.target.email.value);
+        console.log(event.target.phone.value);
+        console.log(event.target.date.value);
+    }
+</script>
+    
+</body>
+</html>

@@ -37,14 +37,74 @@ for(let i=0;i<li.length;i++){
 
 //querySelectorAll
 
-const items = document.querySelectorAll(".list-group-item");
-console.log(items);
-items[1].style.color = "green";
+// const items = document.querySelectorAll(".list-group-item");
+// console.log(items);
+// items[1].style.color = "green";
 
-const odd = document.querySelectorAll("li:nth-child(odd)");
-for(let i=0;i<odd.length;i++){
-    odd[i].style.background = "green";
-}
+// const odd = document.querySelectorAll("li:nth-child(odd)");
+// for(let i=0;i<odd.length;i++){
+//     odd[i].style.background = "green";
+// }
+
+//traversing the dom
+
+const itemList = document.querySelector("#items");
+//parent Node
+console.log(itemList.parentNode);
+itemList.parentNode.style.background = "#f4f4f4";
+
+// parentElement
+console.log(itemList.parentElement);
+itemList.parentElement.style.background = "#f4f4f4";
+
+//childNodes
+console.log(itemList.childNodes);
+console.log(itemList.children);
+console.log(itemList.children[1]);
+
+//FirstChild
+console.log(itemList.firstChild);
+
+//firstElementChild
+console.log(itemList.firstElementChild);
+itemList.firstElementChild.textContent = "hello 1";
+
+//lastChild
+console.log(itemList.lastChild);
+//lastElementChild
+console.log(itemList.lastElementChild);
+itemList.lastElementChild.textContent = "Hello 4";
+
+// nextSibling
+console.log(itemList.nextSibling);
+//nextElementSibling
+console.log(itemList.nextElementSibling);
+
+//previousSibling
+console.log(itemList.previousSibling);
+//previousElementSibling
+console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.style.color = "green";
+
+//createElement
+
+const newDiv = document.createElement('div');
+newDiv.className = "hello";
+newDiv.id = "hello1";
+newDiv.setAttribute('title','Hello Div');
+
+//create text node
+const newDivText = document.createTextNode("Hello world");
+newDiv.appendChild(newDivText);
+console.log(newDiv);
+
+const container = document.querySelector('header .container');
+const h1 = document.querySelector('header h1');
+newDiv.style.fontSize = "30px";
+container.insertBefore(newDiv,h1);
+
+
+
 
 
 

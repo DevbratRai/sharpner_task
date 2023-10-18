@@ -347,6 +347,8 @@ const userList = document.querySelector('#users');
 myForm.addEventListener('submit', onSubmit);
 // for remove the li item
 userList.addEventListener('click',removeList);
+// for edit the items
+userList.addEventListener('click',editList);
 
 let id = 1
 function onSubmit(e) {
@@ -378,6 +380,12 @@ function onSubmit(e) {
     input.className ="delete"
     li.appendChild(input)
 
+    const edit = document.createElement('input');
+    edit.type = "button";
+    edit.value = "Edit";
+    edit.className ="edit"
+    li.appendChild(edit)
+
     // Add HTML
     // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
 
@@ -396,5 +404,19 @@ function removeList(e){
     const arr = text.split(" ");
     userList.removeChild(li);
     localStorage.removeItem(arr[arr.length - 1])
+  }
+}
+
+function editList(e){
+  if(e.target.classList.contains('edit')){
+    const li = e.target.parentElement;
+    const text = li.textContent;
+    const arr = text.split(" ");
+    const user = JSON.parse(localStorage.getItem(arr[arr.length - 1]));
+    nameInput.value = user.name;
+    emailInput.value = user.email;
+    userList.removeChild(li);
+    localStorage.removeItem(arr[arr.length - 1])
+
   }
 }

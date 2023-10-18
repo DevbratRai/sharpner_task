@@ -345,7 +345,7 @@ const userList = document.querySelector('#users');
 
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
-
+let id = 1
 function onSubmit(e) {
   e.preventDefault();
   
@@ -358,8 +358,13 @@ function onSubmit(e) {
     setTimeout(() => msg.remove(), 3000);
   } else {
     // Create new list item with user
-    localStorage.setItem("Name",nameInput.value);
-    localStorage.setItem("email",emailInput.value);
+    let userDetails = {"name":nameInput.value,
+                        "email":emailInput.value
+                      }
+                                    
+    localStorage.setItem(`user${id}`,JSON.stringify(userDetails));
+    // localStorage.setItem("email",emailInput.value);
+    id+=1
     const li = document.createElement('li');
 
     // Add text node with input values
@@ -376,3 +381,4 @@ function onSubmit(e) {
     emailInput.value = '';
   }
 }
+console.log(localStorage.getItem("notes"));

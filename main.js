@@ -345,6 +345,9 @@ const userList = document.querySelector('#users');
 
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
+// for remove the li item
+userList.addEventListener('click',removeList);
+
 let id = 1
 function onSubmit(e) {
   e.preventDefault();
@@ -362,13 +365,18 @@ function onSubmit(e) {
                         "email":emailInput.value
                       }
                                     
-    localStorage.setItem(`user${id}`,JSON.stringify(userDetails));
+    localStorage.setItem(emailInput.value,JSON.stringify(userDetails));
     // localStorage.setItem("email",emailInput.value);
     id+=1
     const li = document.createElement('li');
 
     // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+    li.appendChild(document.createTextNode(`${nameInput.value}   ${emailInput.value}`));
+    const input = document.createElement('input');
+    input.type = "button";
+    input.value = "Delete";
+    input.className ="delete"
+    li.appendChild(input)
 
     // Add HTML
     // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
@@ -381,4 +389,12 @@ function onSubmit(e) {
     emailInput.value = '';
   }
 }
-console.log(localStorage.getItem("notes"));
+function removeList(e){
+  if(e.target.classList.contains('delete')){
+    const li = e.target.parentElement;
+    const text = li.textContent;
+    const arr = text.split(" ");
+    userList.removeChild(li);
+    localStorage.removeItem(arr[arr.length - 1])
+  }
+}

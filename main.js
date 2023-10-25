@@ -9,9 +9,9 @@ const userList = document.querySelector("#users");
 // Listen for form submit
 myForm.addEventListener("submit", onSubmit);
 // for remove the li item
-userList.addEventListener("click", removeList);
+// userList.addEventListener("click", removeList);
 // for edit the items
-userList.addEventListener("click", editList);
+// userList.addEventListener("click", editList);
 
 function onSubmit(e) {
   e.preventDefault();
@@ -96,3 +96,19 @@ function onSubmit(e) {
 //     localStorage.removeItem(arr[arr.length - 1]);
 //   }
 // }
+document.addEventListener("DOMContentLoaded", async () => {
+  const userData = await axios.get(
+    "https://crudcrud.com/api/a7b6071ccfaf43a18e043c7ae4155690/userInfo"
+  );
+
+  const data = userData.data;
+  for (let i = 0; i < data.length; i++) {
+    userList.innerHTML += `
+                        <li>
+                        ${data[i].name}  ${data[i].phone} ${data[i].email}
+                          <input type="button" value="Delete" class="delete">
+                          <input type="button" value="Edit" class="edit">
+                        </li>
+                           `;
+  }
+});

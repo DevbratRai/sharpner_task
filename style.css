@@ -1,0 +1,21 @@
+.container {
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+#my-form {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+.div-form {
+  padding-right: 10px;
+}
+input,
+select {
+  width: 100px;
+}
+button {
+  height: fit-content;
+}

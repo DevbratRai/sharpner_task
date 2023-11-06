@@ -1,14 +1,19 @@
 import React from "react";
+import "./ExpenseItems.css";
 
 function ExpenseItems() {
+  const LocationOfExpenditure = "Lucknow";
+  const expenseDate = new Date(2023, 2, 28);
+  const expenseTitle = "Food";
+  const expensePrice = 300;
   return (
-    <div>
-      <div>
-        <h1>Expense Items</h1>
+    <div className="expense-item">
+      <div>{expenseDate.toISOString()}</div>
+      <div>{LocationOfExpenditure}</div>
+      <div className="expense-item_description">
+        <h2>{expenseTitle}</h2>
+        <div className="expense-item_price">Rs {expensePrice}</div>
       </div>
-      <h3>Food Rs 10</h3>
-      <h3> Petrol Rs 100</h3>
-      <h3>Movies Rs 200</h3>
     </div>
   );
 }

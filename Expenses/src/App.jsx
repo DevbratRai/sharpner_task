@@ -2,9 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import ExpenseItems from "./components/ExpenseItems";
+import Expenses from "./components/Expenses/Expenses";
+// import ExpenseItems from "./ExpenseItems";
 
-function App() {
+const App = () => {
   const items = [
     {
       title: "Food",
@@ -34,18 +35,9 @@ function App() {
 
   return (
     <>
-      {items.map((item) => {
-        return (
-          <ExpenseItems
-            title={item.title}
-            date={item.date}
-            amount={item.amount}
-            LocationOfExpenditure={item.LocationOfExpenditure}
-          />
-        );
-      })}
+      <Expenses arrItem={items} />
     </>
   );
-}
+};
 
 export default App;

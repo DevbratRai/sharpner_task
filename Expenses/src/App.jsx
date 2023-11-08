@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpenses/NewExpense";
 // import ExpenseItems from "./ExpenseItems";
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
 
   return (
     <>
+      <NewExpense />
       <Expenses arrItem={items} />
     </>
   );

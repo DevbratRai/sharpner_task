@@ -37,11 +37,19 @@ const App = () => {
       LocationOfExpenditure: "Gorakhpur",
     },
   ];
+  const [item, setItem] = useState(items);
+
+  const addExpenseHandler = (expense) => {
+    console.log("in app.js");
+    setItem((prevState) => {
+      return [...prevState, expense];
+    });
+  };
 
   return (
     <>
-      <NewExpense />
-      <Expenses arrItem={items} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses arrItem={item} />
     </>
   );
 };

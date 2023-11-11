@@ -13,20 +13,19 @@ const Expenses = (props) => {
   };
   return (
     <Card className="expenses">
+      <ExpensesFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
       {props.arrItem.map((item) => {
         return (
-          <>
-            <ExpensesFilter
-              selected={filteredYear}
-              onChangeFilter={filterChangeHandler}
-            />
-            <ExpenseItems
-              title={item.title}
-              date={item.date}
-              amount={item.amount}
-              LocationOfExpenditure={item.LocationOfExpenditure}
-            />
-          </>
+          <ExpenseItems
+            key={item.id}
+            title={item.title}
+            date={item.date}
+            amount={item.amount}
+            LocationOfExpenditure={item.LocationOfExpenditure}
+          />
         );
       })}
     </Card>

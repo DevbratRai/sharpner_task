@@ -18,17 +18,19 @@ const ExpenseItems = (props) => {
     setPrice(price + 100);
   };
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <ExpenseDetails
-        amount={price}
-        location={props.LocationOfExpenditure}
-        title={title}
-      />
-      <button onClick={updateTitle}>Update Title</button>
-      {/* <button onClick={deleteExpense}>Delete</button> */}
-      <button onClick={updatePrice}>Update Price</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <ExpenseDetails
+          amount={price}
+          location={props.LocationOfExpenditure}
+          title={title}
+        />
+        <button onClick={updateTitle}>Update Title</button>
+        {/* <button onClick={deleteExpense}>Delete</button> */}
+        <button onClick={updatePrice}>Update Price</button>
+      </Card>
+    </li>
   );
 };
 

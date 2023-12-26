@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 
 import MoviesList from "./components/MoviesList";
-import AddMovie from "./components/addMovie";
+import AddMovie from "./components/AddMovie";
 import "./App.css";
 
 function App() {
@@ -63,10 +63,32 @@ function App() {
     console.log(data);
   };
 
+  const deleteMovieHandler = async (movieId) => {
+    const response = await fetch(
+      `https://react-http-2f68d-default-rtdb.firebaseio.com/movies/${movieId}.json`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      setMovies((prevMovies) =>
+        prevMovies.filter((movie) => movie.id !== movieId)
+      );
+      console.log(`Movie with ID ${movieId} deleted successfully`);
+    }
+  };
+
+  const removeItemHandler = (movieId) => {
+    deleteMovieHandler(movieId);
+  };
+
   let content = <p>Found no movies.</p>;
 
   if (movies.length > 0) {
-    content = <MoviesList movies={movies} />;
+    content = <MoviesList onRemove={removeItemHandler} movies={movies} />;
   }
 
   if (error) {
